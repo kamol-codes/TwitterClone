@@ -16,8 +16,19 @@ namespace TwitterClone.Domain.Entities
 
         public Guid? TweetId { get; }
 
-        public DateTime CreatedAt { get; }
+        public DateTimeOffset CreatedAt { get; }
 
         public bool IsRead { get; set; }
+
+        public Notification(Guid id, Guid userId, Guid actorId, string type, Guid? tweetId)
+        {
+            Id = new Guid();
+            UserId = userId;
+            ActorId = actorId;
+            Type = type;
+            TweetId = tweetId;
+            CreatedAt = DateTimeOffset.UtcNow;
+        }
+
     }
 }

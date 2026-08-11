@@ -14,8 +14,18 @@ namespace TwitterClone.Domain.Entities
 
         public string Content { get; set; }
 
-        public DateTime SentAt { get; }
+        public DateTimeOffset SentAt { get; }
 
         public bool IsRead { get; set; }
+
+
+        public Message(Guid senderId, Guid receiverId, string content)
+        {
+            Id = new Guid();
+            SenderId = senderId;
+            ReceiverId = receiverId;
+            Content = content;
+            SentAt = DateTimeOffset.UtcNow;
+        }
     }
 }

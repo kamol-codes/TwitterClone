@@ -13,7 +13,15 @@ namespace TwitterClone.Domain.Entities
 
         public Guid FollowingId { get; }
 
-        public DateTime FollowedAt { get; }
+        public DateTimeOffset FollowedAt { get; }
+
+        public Follow(Guid followerId, Guid followingId)
+        {
+            Id = new Guid();
+            FollowerId = followerId;
+            FollowingId = followingId;
+            FollowedAt = DateTimeOffset.UtcNow;
+        }
     }
 }
 

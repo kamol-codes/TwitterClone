@@ -12,6 +12,14 @@ namespace TwitterClone.Domain.Entities
 
         public Guid TweetId { get; }
 
-        public DateTime BookmarkedAt { get; }
+        public DateTimeOffset BookmarkedAt { get; }
+
+        public Bookmark(Guid userId, Guid tweetId)
+        {
+            Id = new Guid();
+            UserId = userId;
+            TweetId = tweetId;
+            BookmarkedAt = DateTimeOffset.UtcNow;
+        }
     }
 }
