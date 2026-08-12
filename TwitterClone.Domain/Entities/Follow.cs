@@ -5,22 +5,23 @@ using System.Text;
 namespace TwitterClone.Domain.Entities
 {
 
-    public class Follow
+    public class Follow : BaseEntity
     {
-        public Guid Id { get; }
 
         public Guid FollowerId { get; }
 
         public Guid FollowingId { get; }
 
-        public DateTimeOffset FollowedAt { get; }
-
-        public Follow(Guid followerId, Guid followingId)
+        public Follow(Guid followerId, Guid followingId):base(new Guid())
         {
-            Id = new Guid();
             FollowerId = followerId;
             FollowingId = followingId;
-            FollowedAt = DateTimeOffset.UtcNow;
+        }
+
+        public override string DescribeRecord()
+        {
+            var baseRecord = base.DescribeRecord();
+            return $"{baseRecord}, FollowerId: {FollowerId}, FollowingId: {FollowingId}";
         }
     }
 }
