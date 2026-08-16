@@ -23,5 +23,10 @@ namespace TwitterClone.Domain.Entities
             var baseRecord = base.DescribeRecord();
             return $"{baseRecord}, LikeByUserId: {LikedByUserId}";
         }
+
+        public override string GetMessage()
+        {
+            return $"User with ID {LikedByUserId} liked your post.";
+        }
     }
 }
