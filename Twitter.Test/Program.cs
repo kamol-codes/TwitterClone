@@ -36,18 +36,24 @@
 
 //Console.WriteLine(message);
 
-var notification = new List<Notification>
-{
-    new LikeNotification(Guid.NewGuid()),
-    new CommentNotification(Guid.NewGuid()),
+//var notification = new List<Notification>
+//{
+//    new LikeNotification(Guid.NewGuid()),
+//    new CommentNotification(Guid.NewGuid()),
 
-    new FreiendRequestNotification(Guid.NewGuid()),
-    new MentionNotification(Guid.NewGuid()),
-    new SystemNotification("Thsi is system message")
-};
+//    new FreiendRequestNotification(Guid.NewGuid()),
+//    new MentionNotification(Guid.NewGuid()),
+//    new SystemNotification("Thsi is system message")
+//};
 
 
-foreach(var message  in notification)
-{
-    Console.WriteLine(message.GetMessage());
-}
+//foreach(var message  in notification)
+//{
+//    Console.WriteLine(message.GetMessage());
+//}
+
+
+
+ILikable likable = new Tweet("This is test tweet");
+
+Console.WriteLine(likable.CanBeLiked());

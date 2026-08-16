@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
-    public class Tweet : BaseEntity
+    public class Tweet : BaseEntity, ILikable
     {
         public Guid AuthorId { get; }
 
@@ -16,10 +12,20 @@ namespace TwitterClone.Domain.Entities
             Content = content;
         }
 
+        public Tweet(string content) : base(new Guid())
+        {
+            Content = content;
+        }
+
         public override string DescribeRecord()
         {
             var baseRecord = base.DescribeRecord();
             return $"{baseRecord}, AuthorId: {AuthorId}, Content: {Content}";
+        }
+
+        public bool CanBeLiked()
+        {
+            return true;
         }
     }
 }
