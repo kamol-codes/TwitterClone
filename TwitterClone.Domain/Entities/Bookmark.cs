@@ -4,22 +4,22 @@ using System.Text;
 
 namespace TwitterClone.Domain.Entities
 {
-    public class Bookmark
+    public class Bookmark : BaseEntity
     {
-        public Guid Id { get; }
-
         public Guid UserId { get; }
 
         public Guid TweetId { get; }
 
-        public DateTimeOffset BookmarkedAt { get; }
-
-        public Bookmark(Guid userId, Guid tweetId)
+        public Bookmark(Guid userId, Guid tweetId) : base(new Guid())
         {
-            Id = new Guid();
             UserId = userId;
             TweetId = tweetId;
-            BookmarkedAt = DateTimeOffset.UtcNow;
+        }
+
+        public override string DescribeRecord()
+        {
+            var baseRecord = base.DescribeRecord();
+            return $"{baseRecord}, UserId: {UserId}, TweetId: {TweetId}";
         }
     }
 }
