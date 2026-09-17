@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
     abstract public class Notification : BaseEntity
     {
@@ -14,7 +10,7 @@ namespace TwitterClone.Domain.Entities
 
         protected string Message { get; set; }
 
-        public Notification(string notificationType) : base(new Guid())
+        public Notification(string notificationType) : base(Guid.NewGuid())
         {
             NotificationType = notificationType;
         }
@@ -29,6 +25,6 @@ namespace TwitterClone.Domain.Entities
             return $" Notification Class: Type: {NotificationType},Message: {Message}, IsRead: {IsRead}";
         }
 
-         public abstract string GetMessage();
+        public abstract string GetMessage();
     }
 }

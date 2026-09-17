@@ -6,13 +6,13 @@
 
         public string Content { get; }
 
-        public Tweet(Guid authorId, string content) : base(new Guid())
+        public Tweet(Guid authorId, string content) : base(Guid.NewGuid())
         {
             AuthorId = authorId;
             Content = content;
         }
 
-        public Tweet(string content) : base(new Guid())
+        public Tweet(string content) : base(Guid.NewGuid())
         {
             Content = content;
         }
