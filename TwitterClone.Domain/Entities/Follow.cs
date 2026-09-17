@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
 
     public class Follow : BaseEntity
@@ -12,7 +8,7 @@ namespace TwitterClone.Domain.Entities
 
         public Guid FollowingId { get; }
 
-        public Follow(Guid followerId, Guid followingId):base(new Guid())
+        public Follow(Guid followerId, Guid followingId) : base(Guid.NewGuid())
         {
             FollowerId = followerId;
             FollowingId = followingId;

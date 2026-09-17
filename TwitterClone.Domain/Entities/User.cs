@@ -11,7 +11,7 @@
         private List<Guid> Followers = new List<Guid>();
         private List<Guid> IncomingNotifications = new List<Guid>();
 
-        public User() : base(new Guid())
+        public User() : base(Guid.NewGuid())
         {
 
         }
