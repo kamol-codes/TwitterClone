@@ -10,6 +10,8 @@
 
         protected string Message { get; set; }
 
+        public string Type { get; set; }
+
         public Notification(string notificationType) : base(Guid.NewGuid())
         {
             NotificationType = notificationType;

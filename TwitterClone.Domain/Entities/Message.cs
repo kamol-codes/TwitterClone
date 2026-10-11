@@ -10,12 +10,16 @@
 
         public bool IsRead { get; set; }
 
+        public DateTime SentAt { get; set; }
 
-        public Message(Guid senderId, Guid receiverId, string content) : base(Guid.NewGuid())
+
+        public Message(Guid senderId, Guid receiverId, string content, DateTime sentAt, bool isRead) : base(Guid.NewGuid())
         {
             SenderId = senderId;
             ReceiverId = receiverId;
             Content = content;
+            SentAt = sentAt;
+            IsRead = isRead;
         }
 
         public override string DescribeRecord()

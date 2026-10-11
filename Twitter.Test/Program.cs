@@ -1,6 +1,4 @@
-﻿using TwitterClone.Domain.Entities;
-
-
+﻿
 //var notification = new Notification("Like");
 
 //var message = notification.GetMessage();
@@ -54,6 +52,6 @@
 
 
 
-ILikable likable = new Tweet("This is test tweet");
+//ILikable likable = new Tweet("This is test tweet");
 
-Console.WriteLine(likable.CanBeLiked());
+//Console.WriteLine(likable.CanBeLiked());

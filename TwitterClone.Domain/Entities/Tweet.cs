@@ -2,9 +2,11 @@
 {
     public class Tweet : BaseEntity, ILikable
     {
-        public Guid AuthorId { get; }
+        public Guid AuthorId { get; private set; }
 
-        public string Content { get; }
+        public string Content { get; private set; }
+        public static int MaxContentLength = 200;
+
 
         public Tweet(Guid authorId, string content) : base(Guid.NewGuid())
         {
@@ -12,7 +14,7 @@
             Content = content;
         }
 
-        public Tweet(string content) : base(Guid.NewGuid())
+        public void UpdateTweet(string content)
         {
             Content = content;
         }
