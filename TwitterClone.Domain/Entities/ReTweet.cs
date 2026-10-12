@@ -1,30 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Linq;
+﻿//namespace TwitterClone.Domain.Entities
+//{
+//    public class Retweet : BaseEntity
+//    {
+//        public string Comment { get; set; }
+//        public Guid UserId { get; set; }
 
-namespace TwitterClone.Domain.Entities
+//        public Guid TweetId { get; set; }
+
+//        public DateTimeOffset RetweetedAt { get; }
+
+//        public Retweet() : base(Guid.NewGuid())
+//        {
+
+//        }
+
+//        public override string DescribeRecord()
+//        {
+//            var baseRecord = base.DescribeRecord();
+//            return $"{baseRecord},Comment: {Comment}, UserId: {UserId}, TweetId: {TweetId}";
+//        }
+
+//        public void MarkAsModified()
+//        {
+//            throw new NotImplementedException();
+//        }
+//    }
+//}
+
+using TwitterClone.Domain.Entities;
+
+public class Retweet : BaseEntity
 {
-    public class ReTweet : BaseEntity
+    public string Comment { get; private set; }
+    public Guid UserId { get; private set; }
+    public Guid TweetId { get; private set; }
+    public DateTimeOffset RetweetedAt { get; private set; }
+
+    public Retweet(Guid userId, Guid tweetId, string comment)
+        : base(Guid.NewGuid())
     {
-        public string Comment { get; }
-        public Guid UserId { get; }
-
-        public Guid TweetId { get; }
-
-        public DateTimeOffset RetweetedAt { get; }
-
-        public ReTweet(Guid userId, Guid tweetId) : base(new Guid())
-        {
-            UserId = userId;
-            TweetId = tweetId;
-            RetweetedAt = DateTimeOffset.UtcNow;
-        }
-
-        public override string DescribeRecord()
-        {
-            var baseRecord = base.DescribeRecord();
-            return $"{baseRecord},Comment: {Comment}, UserId: {UserId}, TweetId: {TweetId}";
-        }
+        UserId = userId;
+        TweetId = tweetId;
+        Comment = comment;
+        RetweetedAt = DateTimeOffset.UtcNow;
     }
+
+    private Retweet() : base(Guid.Empty)
+    {
+    }
+
+    public void UpdateComment(string comment)
+    {
+        if (string.IsNullOrWhiteSpace(comment))
+            throw new ArgumentException("Comment cannot be empty.");
+
+        Comment = comment;
+    }
+
+    public override string DescribeRecord()
+    {
+        var baseRecord = base.DescribeRecord();
+
+        return $"{baseRecord}, Comment: {Comment}, " +
+               $"UserId: {UserId}, TweetId: {TweetId}, " +
+               $"RetweetedAt: {RetweetedAt}";
+    }
+
+
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
     public class Like : BaseEntity
     {
@@ -10,7 +6,7 @@ namespace TwitterClone.Domain.Entities
 
         public Guid TweetId { get; }
 
-        public Like(Guid userId, Guid tweetId) :base(new Guid())
+        public Like(Guid userId, Guid tweetId) : base(Guid.NewGuid())
         {
             UserId = userId;
             TweetId = tweetId;
@@ -21,5 +17,7 @@ namespace TwitterClone.Domain.Entities
             var baseRecord = base.DescribeRecord();
             return $"{baseRecord}, UserId: {UserId}, TweetId: {TweetId}";
         }
+
+
     }
 }

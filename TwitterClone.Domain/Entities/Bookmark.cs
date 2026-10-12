@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
     public class Bookmark : BaseEntity
     {
@@ -10,7 +6,7 @@ namespace TwitterClone.Domain.Entities
 
         public Guid TweetId { get; }
 
-        public Bookmark(Guid userId, Guid tweetId) : base(new Guid())
+        public Bookmark(Guid userId, Guid tweetId) : base(Guid.NewGuid())
         {
             UserId = userId;
             TweetId = tweetId;

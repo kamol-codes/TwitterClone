@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
     public class BaseEntity
     {
-        public Guid Id { get; }
-        public DateTimeOffset CreatedAt { get; }
-        public DateTimeOffset? ModifiedAt { get; }
-        public Guid CreatedBy { get; }
-        public Guid? ModifiedBy { get; }
+        public Guid Id { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime? ModifiedAt { get; private set; }
+        public Guid CreatedBy { get; private set; }
+        public Guid? ModifiedBy { get; private set; }
 
         public BaseEntity(Guid id)
         {
             Id = id;
-            CreatedAt = DateTimeOffset.Now;
+            CreatedAt = DateTime.Now;
+        }
+        public void MarkAsModified()
+        {
+            ModifiedAt = DateTime.UtcNow;
         }
         public virtual string DescribeRecord()
         {
