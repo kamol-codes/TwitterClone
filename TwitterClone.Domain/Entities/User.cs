@@ -7,11 +7,12 @@
         public string Username { get; set; }
 
         public string Email { get; set; }
+        public string PhoneNumber { get; set; }
 
         private List<Guid> Followers = new List<Guid>();
         private List<Guid> IncomingNotifications = new List<Guid>();
 
-        public User() : base(new Guid())
+        public User() : base(Guid.NewGuid())
         {
 
         }

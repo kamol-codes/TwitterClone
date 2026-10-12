@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwitterClone.Domain.Entities
+﻿namespace TwitterClone.Domain.Entities
 {
     public class Message : BaseEntity
     {
@@ -14,12 +10,16 @@ namespace TwitterClone.Domain.Entities
 
         public bool IsRead { get; set; }
 
+        public DateTime SentAt { get; set; }
 
-        public Message(Guid senderId, Guid receiverId, string content) : base(new Guid())
+
+        public Message(Guid senderId, Guid receiverId, string content, DateTime sentAt, bool isRead) : base(Guid.NewGuid())
         {
             SenderId = senderId;
             ReceiverId = receiverId;
             Content = content;
+            SentAt = sentAt;
+            IsRead = isRead;
         }
 
         public override string DescribeRecord()
