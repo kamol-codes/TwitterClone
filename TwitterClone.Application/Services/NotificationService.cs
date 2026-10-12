@@ -121,7 +121,7 @@ namespace TwitterClone.Application.Services
                 "Like" => new LikeNotification(triggeredByUserId),
                 "Comment" => new CommentNotification(triggeredByUserId),
                 "Mention" => new MentionNotification(triggeredByUserId),
-                "FriendRequest" => new FreiendRequestNotification(triggeredByUserId),
+                "FriendRequest" => new FriendRequestNotification(triggeredByUserId),
                 "System" => new SystemNotification(),
                 _ => null
             };
